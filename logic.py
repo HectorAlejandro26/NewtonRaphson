@@ -1,4 +1,4 @@
-from typing import Sequence, List, Tuple, Union
+from typing import Sequence, List, Union
 from fractions import Fraction
 from pandas import DataFrame
 
@@ -33,7 +33,7 @@ def newton_raphson(
         "x_n+1": []
     }
 
-    for i in range(max_iter):
+    for _ in range(max_iter):
         fx = __eval_func(coefs, x)
         dfx = __eval_func(d_coefs, x)
 
