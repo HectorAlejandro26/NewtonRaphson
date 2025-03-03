@@ -3,7 +3,8 @@ from fractions import Fraction
 from pandas import DataFrame
 
 
-def __eval_func(coefs: Sequence[int], x: float) -> float:
+def __eval_func(coefs: Sequence[int], x: Fraction) -> Fraction:
+    """Evalue la funcion con los coeficientes dados, retorna el resultado"""
     res: Fraction = 0
     x = Fraction(x)
 
@@ -13,6 +14,7 @@ def __eval_func(coefs: Sequence[int], x: float) -> float:
 
 
 def derivar(coefs: Sequence[int]) -> List[int]:
+    """Deriva la funcion con los coeficientes dados, retorna los coeficientes de la funcion derivada."""
     return [c * e for c, e in zip(coefs, range(len(coefs) - 1, 0, -1))]
 
 
@@ -22,7 +24,8 @@ def newton_raphson(
     tol=1e-10,
     max_iter=500
 ) -> DataFrame:
-
+    """Ejecuta el metodo de Newton-Raphson para evaluar raíces,"""
+    """retorna un `pandas.DataFrame` con los valores obtenidos de cada iteracion"""
     d_coefs = derivar(coefs)
     x: Fraction = Fraction(x)
 
